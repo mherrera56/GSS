@@ -43,15 +43,66 @@ alldata <- read.csv(file="gss2010.csv", header=TRUE)
 barchartGC(~race+condrift, data=alldata, type = "percent") 
 ```
 
+There seems to be a difference between the way black people percieve continental drift from the white people and other's races due to the results from the barcharts. The number of black people that believe continental drift to be false is twice that of the number of whites and other races say it is false.  
+
+```{r}
+barchartGC(~race+cappun, data=alldata, type = "percent") 
+```
+  
+Based on the results more black people are opposed to capital punishment, where as the other races and whites and more in favor to capital punishment with a majority of whites haveing a higher percent of favoring then opposing punishment.  
+
+```{r}
+barchartGC(~condrift+cappun, data=alldata, type = "percent") 
+```
+  
+text entry here  
 
 ### Numerical Descriptive Results
 
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
+```{r}
+tab1 =xtabs(~race+condrift, data=alldata)
+rowPerc(tab1)
+colPerc(tab1)
+```
+What we see is that there is very little difference between the way whites and other races and how they percieve continental drift compared to black people, where 23% of them believe it to be false compared to whties and others only 8 and 9 percent respectivley.  
+
+```{r}
+tab2 =xtabs(~race+cappun, data=alldata)
+rowPerc(tab2)
+colPerc(tab2)
+```
+  
+text here  
+
+```{r}
+tab3 =xtabs(~condrift+cappun, data=alldata)
+rowPerc(tab3)
+colPerc(tab3)
+```
+  
+text entry here  
 
 ## Inferential Results
 
 <!--State hypothesis clearly.  Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc.  Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!-->
+```{r}
+chisqtestGC(tab1,graph = TRUE)
+```
+  
+DUe to the low value of the P-value we will reject the null hyptohesis.Based on the test we can comme to the conclusion that these two variables are independent due to the low P-value.  
 
+```{r}
+chisqtestGC(tab2,graph = TRUE)
+```
+  
+text entry here  
+
+```{r}
+chisqtestGC(tab3,graph = TRUE)
+```
+  
+text here  
 
 # Discussion and Conclusion
 
